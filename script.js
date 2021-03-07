@@ -1,11 +1,11 @@
 const quizData = [
     {
-        question: "How old is PK",
-        a:"23",
-        b:"18",
-        c:"21",
-        d:"20",
-        correct:"d"
+        question: "What is the programming lanugage used for Machine Learning",
+        a:"Python",
+        b:"C++",
+        c:"Java",
+        d:"Ruby",
+        correct:"a"
     },{
         question: "What is the most used programming lanugage",
         a:"Java",
