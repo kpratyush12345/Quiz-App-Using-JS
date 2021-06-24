@@ -1,34 +1,38 @@
 const quizData = [
-    {
-        question: "What is the programming lanugage used for Machine Learning",
-        a:"Python",
-        b:"C++",
-        c:"Java",
-        d:"Ruby",
-        correct:"a"
-    },{
-        question: "What is the most used programming lanugage",
-        a:"Java",
-        b:"C++",
-        c:"Python",
-        d:"Ruby",
-        correct:"c"
-    },{
-        question: "What is the least used programming lanugage",
-        a:"Java",
-        b:"C++",
-        c:"Python",
-        d:"Ruby",
-        correct:"d"
-    },{
-        question: "What is the most used programming lanugage for competitive programming",
-        a:"Java",
-        b:"C++",
-        c:"Python",
-        d:"Ruby",
-        correct:"b"
-    }
-]
+  {
+    question: "What is the programming lanugage used for Machine Learning",
+    a: "Python",
+    b: "C++",
+    c: "Java",
+    d: "Ruby",
+    correct: "a",
+  },
+  {
+    question: "What is the most used programming lanugage",
+    a: "Java",
+    b: "C++",
+    c: "Python",
+    d: "JavaScript",
+    correct: "d",
+  },
+  {
+    question: "What is the least used programming lanugage",
+    a: "Java",
+    b: "C++",
+    c: "Python",
+    d: "Ruby",
+    correct: "d",
+  },
+  {
+    question:
+      "What is the most used programming lanugage for competitive programming",
+    a: "Java",
+    b: "C++",
+    c: "Python",
+    d: "Ruby",
+    correct: "b",
+  },
+];
 
 const quiz = document.getElementById("quiz");
 const answerEls = document.querySelectorAll(".answer");
@@ -43,45 +47,45 @@ let currentQuestion = 0;
 let score = 0;
 loadQuiz();
 
-function loadQuiz(){
-    deselectAnswers();
-    const currentQuizData = quizData[currentQuestion];
+function loadQuiz() {
+  deselectAnswers();
+  const currentQuizData = quizData[currentQuestion];
 
-    questionEl.innerText = currentQuizData.question ;
-    a_text.innerText = currentQuizData.a ;
-    b_text.innerText = currentQuizData.b ;
-    c_text.innerText = currentQuizData.c ;
-    d_text.innerText = currentQuizData.d ;
+  questionEl.innerText = currentQuizData.question;
+  a_text.innerText = currentQuizData.a;
+  b_text.innerText = currentQuizData.b;
+  c_text.innerText = currentQuizData.c;
+  d_text.innerText = currentQuizData.d;
 }
 
-function getSelected(){
-    let answer = undefined;
+function getSelected() {
+  let answer = undefined;
 
-    answerEls.forEach((answerEl) => {
-        if(answerEl.checked){
-            answer = answerEl.id;
-        }
-    });
-    return answer;
+  answerEls.forEach((answerEl) => {
+    if (answerEl.checked) {
+      answer = answerEl.id;
+    }
+  });
+  return answer;
 }
 
-function deselectAnswers(){
-    answerEls.forEach((answerEl) => {
-        answerEl.checked = false;        
-    });
+function deselectAnswers() {
+  answerEls.forEach((answerEl) => {
+    answerEl.checked = false;
+  });
 }
 
-submitBtn.addEventListener('click',() => {
-    const answer = getSelected();
-        if(answer){
-            if(answer === quizData[currentQuestion].correct){
-                score++;
-            }
-            currentQuestion++;
-            if(currentQuestion < quizData.length){
-                loadQuiz();
-            } else {
-                quiz.innerHTML = `<h2>You answered correctly at ${score}/${quizData.length} questions.</h2> <button onclick ="location.reload()">Reload</button>`;
-            }
-        }
+submitBtn.addEventListener("click", () => {
+  const answer = getSelected();
+  if (answer) {
+    if (answer === quizData[currentQuestion].correct) {
+      score++;
+    }
+    currentQuestion++;
+    if (currentQuestion < quizData.length) {
+      loadQuiz();
+    } else {
+      quiz.innerHTML = `<h2>You answered correctly at ${score}/${quizData.length} questions.</h2> <button style="width:80%" onclick ="location.reload()">Reload</button>`;
+    }
+  }
 });
